@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prédire le Prix d'une Voiture d'occasion</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='flaskstyle.css') }}">
+  <script>
+    function validateForm() {
+      var year = document.getElementsByName("year")[0].value;
+      var currentYear = new Date().getFullYear();
+      
+      // Validation de l'année (entre 1900 et l'année actuelle)
+      if (year < 2009 || year > currentYear) {
+        alert("Veuillez entrer une année valide entre 2009 et " + currentYear + ".");
+        return false;
+      }
+
+      // Validation des autres champs numériques si nécessaire
+      var km_driven = document.getElementsByName("km_driven")[0].value;
+      if (km_driven <= 0) {
+        alert("Le kilométrage ne peut pas être inférieur ou égal à 0.");
+        return false;
+      }
+
+      var engine = document.getElementsByName("engine")[0].value;
+      if (engine <= 0) {
+        alert("La taille du moteur ne peut pas être inférieure ou égale à 0.");
+        return false;
+      }
+
+      var max_power = document.getElementsByName("max_power")[0].value;
+      if (max_power <= 0) {
+        alert("La puissance maximale ne peut pas être inférieure ou égale à 0.");
+        return false;
+      }
+
+      var mileage = document.getElementsByName("mileage")[0].value;
+      if (mileage <= 0) {
+        alert("La consommation ne peut pas être inférieure ou égale à 0.");
+        return false;
+      }
+
+      return true;
+    }
+  </script>
+</head>
+<body>
+  <div class="background-video">
+    <video autoplay muted loop>
+      <source src="{{ url_for('static', filename='voiture.mp4') }}" type="video/mp4">
+    </video>
+  </div>
+
+  <div class="container mt-5">
+    <h1 class="text-center mb-4">Prédire le Prix d'une Voiture d'Occasion</h1>
+    <form action="/predict" method="post" class="needs-validation" novalidate onsubmit="return validateForm()">
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="name">Nom de la marque :</label>
+          <select name="name" class="form-select" required>
+            <option value="BMW">BMW</option>
+            <option value="Chevrolet">Chevrolet</option>
+            <option value="Ford">Ford</option>
+            <option value="Honda">Honda</option>
+            <option value="Hyundai">Hyundai</option>
+            <option value="Jaguar">Jaguar</option>
+            <option value="Mahindra">Mahindra</option>
+            <option value="Maruti">Maruti</option>
+            <option value="Nissan">Nissan</option>
+            <option value="Renault">Renault</option>
+            <option value="Skoda">Skoda</option>
+            <option value="Tata">Tata</option>
+            <option value="Toyota">Toyota</option>
+            <option value="Volkswagen">Volkswagen</option>
+            <option value="Volvo">Volvo</option>
+            <option value="other">Autres</option>
+          </select>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="transmission">Transmission :</label>
+          <select name="transmission" class="form-select" required>
+            <option value="Manual">Manuelle</option>
+            <option value="Automatic">Automatique</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 mb-3">
+          <label for="year">Année :</label>
+          <input type="number" name="year" class="form-control" min="2009" max="{{ currentYear }}" required>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="km_driven">Kilométrage (km) :</label>
+          <input type="number" step="0.01" name="km_driven" class="form-control" min="0" required>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="engine">Taille du moteur (cm³) :</label>
+          <input type="number" step="0.01" name="engine" class="form-control" min="0" required>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="max_power">Puissance maximale (hp) :</label>
+          <input type="number" step="0.01" name="max_power" class="form-control" min="0" required>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="mileage">Consommation (km/L) :</label>
+          <input type="number" step="0.01" name="mileage" class="form-control" min="0" required>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Prédire</button>
+
+
+     
+    </form>
+
+    {% if prediction is not none %}
+    <div class="mt-4 alert alert-success text-center">
+      Le prix prédit de la voiture est : <strong>{{ prediction }} $</strong>
+    </div>
+    {% endif %}
+
+    {% if error_message is not none %}
+    <div class="mt-4 alert alert-danger text-center">
+      {{ error_message }}
+    </div>
+    {% endif %}
+  </div>
+   <div class="text-center mt-3">
+      
+        <a href="/" class="btn btn-secondary ms-2">Retour à l'accueil</a>
+    </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

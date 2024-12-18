@@ -1,0 +1,179 @@
+/* Appliquer un fond élégant avec un dégradé */
+body {
+    background: linear-gradient(to bottom, #eef2f3, #8e9eab); /* Dégradé clair et moderne */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333; /* Couleur du texte */
+    margin: 0;
+    padding: 0;
+}
+
+/* Conteneur principal avec un espace bien défini */
+.container {
+    margin: 0 auto;
+    padding: 40px 20px;
+    max-width: 1200px;
+    background: rgba(255, 255, 255, 0.9); /* Fond translucide */
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Effet d'ombre douce */
+}
+
+/* Titre principal */
+h1 {
+    text-align: center;
+    color: #2c3e50; /* Bleu-gris élégant */
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+/* Sous-titres */
+h3 {
+    color: #34495e; /* Gris foncé raffiné */
+    font-size: 1.8rem;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    border-left: 5px solid #2c3e50;
+    padding-left: 10px;
+    font-weight: 600;
+}
+
+/* Paragraphe descriptif */
+p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    text-align: justify;
+    color: #555; /* Couleur de texte subtile */
+    margin-bottom: 20px;
+}
+
+/* Boutons */
+a.btn {
+    display: inline-block;
+    font-size: 1.1rem;
+    padding: 12px 25px;
+    margin: 10px 5px;
+    border-radius: 50px;
+    text-decoration: none;
+    color: white;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+a.btn-primary {
+    background: #2980b9; /* Bleu vif */
+}
+
+a.btn-primary:hover {
+    background: #1f618d; /* Bleu foncé au survol */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+a.btn-success {
+    background: #27ae60; /* Vert vif */
+}
+
+a.btn-success:hover {
+    background: #1e8449; /* Vert foncé au survol */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Section des graphiques et tableaux */
+.graph-container {
+    margin-top: 40px;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.graph-container h4 {
+    text-align: center;
+    color: #2980b9;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+/* Tableaux */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    text-align: left;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+}
+
+table th {
+    background: #2c3e50;
+    color: white;
+    font-weight: 600;
+}
+
+table tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+table tr:hover {
+    background: #f1f1f1;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    background: #2c3e50;
+    color: white;
+    padding: 15px 0;
+    font-size: 0.9rem;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    margin-top: 50px;
+}
+
+/* Alertes */
+.alert {
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    display: block;
+}
+
+.alert-info {
+    background: #d9edf7;
+    color: #31708f;
+}
+
+.alert-warning {
+    background: #fcf8e3;
+    color: #8a6d3b;
+}
+
+.alert-error {
+    background: #f2dede;
+    color: #a94442;
+}
+
+/* Media Queries pour la réactivité */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+    h3 {
+        font-size: 1.5rem;
+    }
+    p {
+        font-size: 1rem;
+    }
+    a.btn {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+}
